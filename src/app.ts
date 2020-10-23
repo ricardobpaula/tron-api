@@ -7,7 +7,7 @@ app.use(express.json());
 app.get('/app',(req, res) => {
     const message = {message: 'Hello World! '}
     res.json(message);
-}); 
+});
 
 
 export default app;
