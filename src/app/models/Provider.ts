@@ -1,37 +1,38 @@
-import {DataTypes, Model, Sequelize } from 'sequelize';
-import database from '../../database';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn  } from 'typeorm';
 
-class Provider extends Model {
+@Entity('providers')
+export default class Provider {
+  
+  @PrimaryGeneratedColumn({unsigned: true})
   public id!: number;
+
+  @Column({nullable: false})
   public name!: string;
+
+  @Column({
+    length: 14, 
+    unique:true,
+    nullable: false
+  })
   public cnpj!: string;
+
+  @Column({
+    length: 11, 
+    unique:true,
+    nullable: false
+  })
   public phone!: string;
+
+  @Column({
+    unique:true,
+    nullable: false
+  })
   public email!: string;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
-  public static readonly TableName: string = 'Providers';
+  @CreateDateColumn()
+  public createdAt!: Date;
 
-  public static prepareInit(){
-    this.init(
-      {
-        id: {
-          type: DataTypes.INTEGER.UNSIGNED,
-          primaryKey: true,
-          autoIncrement: true,
-        },
-        name: new DataTypes.STRING,
-        cnpj: new DataTypes.STRING(14),
-        phone: new DataTypes.STRING(11),
-        email: new DataTypes.STRING
-        },
-        {
-          sequelize: database.connection,
-          freezeTableName: true,
-          tableName: this.TableName,
-        }
-    );
-  }
+  @UpdateDateColumn()
+  public updatedAt!: Date;
+
 }
-
-export default Provider;

@@ -1,9 +1,8 @@
 import { Router } from "express";
-
-import ProvidersController from './app/controllers/ProvidersController';
+import providerController from './app/controllers/ProvidersController';
 
 const routes = Router();
 
-routes.get('/providers', ProvidersController.index);
+routes.use('/providers', providerController);
 
 export default routes;
