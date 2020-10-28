@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 @Entity('providers')
 export default class Provider {
   
-  @PrimaryGeneratedColumn({unsigned: true})
+  @PrimaryGeneratedColumn('increment',{unsigned: true})
   public id!: number;
 
   @Column({nullable: false})
@@ -29,10 +29,10 @@ export default class Provider {
   })
   public email!: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({name: 'created_at'})
   public createdAt!: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({name: 'updated_at'})
   public updatedAt!: Date;
 
 }

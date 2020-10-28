@@ -11,6 +11,7 @@ export class CreateProvider1603816116968 implements MigrationInterface {
                         name: 'id',
                         type: 'integer',
                         isPrimary: true,
+                        isGenerated: true,
                         unsigned: true,
                         generationStrategy: 'increment',
                     },
@@ -30,7 +31,6 @@ export class CreateProvider1603816116968 implements MigrationInterface {
                         name: 'phone',
                         type: 'varchar',
                         isNullable: false,
-                        isUnique: true,
                         length: '11'
                     },
                     { 
@@ -40,12 +40,12 @@ export class CreateProvider1603816116968 implements MigrationInterface {
                         isUnique: true,
                     },
                     { 
-                        name: 'createdAt',
+                        name: 'created_at',
                         type: 'timestamp',
                         default: 'now()'
                     },
                     { 
-                        name: 'updatedAt',
+                        name: 'updated_at',
                         type: 'timestamp',
                         default: 'now()'
                     },
