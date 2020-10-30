@@ -11,7 +11,7 @@ interface Request {
     email: string
 }
 
-class CreateUserService {
+class CreateProviderService {
     public async execute({name, cnpj, phone, email}: Request): Promise<Provider> {
         const providerRepository = getRepository(Provider);
 
@@ -20,11 +20,7 @@ class CreateUserService {
         });
 
         if (checkProviderExists) {
-            if (checkProviderExists.cnpj === cnpj){
-            throw new AppError('Provider CPNJ already used.');
-            }else if(checkProviderExists.email === email ) {
-                throw new AppError('Provider E-mail already used.');
-            }
+            throw new AppError('Provider E-mail or cnpj already used.');
         }
 
         const provider = providerRepository.create({
@@ -40,4 +36,4 @@ class CreateUserService {
     }
 }
 
-export default CreateUserService;
+export default CreateProviderService;
