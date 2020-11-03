@@ -12,11 +12,8 @@ const providersRouter = Router();
 providersRouter.get('/', async (request, response) => {
     const providersRepository = getRepository(Provider);
     const providers = await providersRepository.find();
-    if (providers.length === 0){
-        return response.status(200).json({message: 'Providers not found'});
-    }else {
-        return response.status(200).json(providers);
-    }
+
+    return response.status(200).json(providers);
 });
 
 //Show a unique provider
