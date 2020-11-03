@@ -7,8 +7,6 @@ module.exports = {
     database: process.env.TYPEORM_DATABASE,
     synchronize: process.env.TYPEORM_SYNCHRONIZE == 'true',
     logging: process.env.TYPEORM_LOGGING  == 'true',
-    // entities: ['src/models/**/*.ts'],
-    // migrations: ['src/database/migrations/**/*.ts'],
     entities: [process.env.TYPEORM_ENTITIES],
     migrations: [process.env.TYPEORM_MIGRATIONS],
     cli: {

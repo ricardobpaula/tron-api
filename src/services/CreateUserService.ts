@@ -35,7 +35,7 @@ class CreateUserService {
       throw new AppError(`Role ${roleName} do not exist.`);
       
     }
-
+    
     const hashedPassword = await hash(password, 8);
 
     const user = usersRepository.create({
@@ -48,9 +48,8 @@ class CreateUserService {
       avatar: 'default.png'
     });
 
-    console.log(role);
     await usersRepository.save(user);
-
+    
     return user;
 
   }
