@@ -6,7 +6,6 @@ import authConfig from '../config/auth';
 import AppError from '../errors/AppError';
 
 import User from '../models/User';
-import Role from "../models/Role";
 
 interface Request {
   userName: string;
@@ -25,10 +24,9 @@ class AuthenticateUserService {
     const user = await usersRepository.findOne({ 
       where: { userName },
       join: {
-        alias: 'roles',
-        innerJoin: {role: 'role'},
-      }
-    });
+        alias: 'users',
+        innerJoinAndSelect: { role: 'users.role' }
+    }});
 
     if(!user){
       throw new AppError('Incorrect user name/password combination', 401);
